@@ -62,7 +62,7 @@ body {
 }
 
 footer {
-    border-top: 1px rgb(167, 117, 10) solid;
+    border-top: 2px rgb(167, 117, 10) solid;
     background-color: black;
     display: flex;
     flex-direction: row;
@@ -87,6 +87,7 @@ footer {
 
 .hero-section {
     border: 1px rgb(167, 117, 10) solid;
+    border-radius: 2px;
     margin: 50px 50px 35px 50px;
     min-width: 1000px;
     background-color: #f9ce4227;
