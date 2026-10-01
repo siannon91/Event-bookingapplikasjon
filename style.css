@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px rgb(167, 117, 10) solid;
+    border-radius: 2px;
+    margin: 5px;
+    position: sticky;
+    min-width: 700px;
+}
+
+.logo-bianco {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    padding: 15px;
+}
+
+.nav-bar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 47px 60px;
+
+}
+
+.nav-bar li {
+    list-style: none;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-bar a:hover {
+  text-decoration: underline; /* Appare quando ci passi sopra */
+}
+
+body {
+    background-image: url(./images/sfondobianco.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    
+}
