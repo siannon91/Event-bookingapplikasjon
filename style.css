@@ -49,7 +49,7 @@
 body {
     background-image: url(./images/sfondobianco.jpg);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
 }
 
@@ -77,7 +77,7 @@ footer {
 
 .hero-section {
     border: 1px rgb(167, 117, 10) solid;
-    margin: 50px;
+    margin: 50px 50px 35px 50px;
     min-width: 1000px;
 }
 
@@ -127,7 +127,7 @@ footer {
     text-align: center;
     color: #8c6d28;
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     letter-spacing: 2px;
 }
 
@@ -139,39 +139,28 @@ footer {
 }
 
 .film-card {
-    background: transparent;
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 4px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .poster-container {
     width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: box-shadow 0.3s ease;
 }
 
 .poster-container img {
     width: 100%;
-    height: 330px;
-    object-fit: cover;
+    height: 400px;
+    object-fit: contain;
     display: block;
-    transition: transform 0.3s ease;
-}
-
-.film-card:hover {
-    transform: translateY(-6px);
+    border: 1px solid black;
+    border-radius: 3px;
 }
 
 .film-card:hover .poster-container {
     box-shadow: 0 0 20px rgba(184, 134, 11, 0.6), 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.film-card:hover .poster-container img {
-    transform: scale(1.03);
 }
 
 .film-info {
@@ -196,7 +185,6 @@ footer {
     font-size: 0.85rem;
     color: #8c6d28;
     margin: 0;
-    font-style: italic;
 }
 
 .more-btn-container {
@@ -208,9 +196,9 @@ footer {
     background-color: #111;
     color: #d4af37;
     border: 2px solid #8c6d28;
-    padding: 14px 40px;
+    padding: 15px 40px;
     font-size: 1rem;
-    font-weight: bold;
+
     border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
