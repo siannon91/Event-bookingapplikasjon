@@ -13,6 +13,8 @@
     margin: 5px;
     position: sticky;
     min-width: 700px;
+
+    
 }
 
 .logo-bianco {
@@ -32,6 +34,7 @@
 
 .nav-bar li {
     list-style: none;
+
 }
 
 .nav-bar a {
@@ -40,14 +43,14 @@
 }
 
 .nav-bar a:hover {
-  text-decoration: underline; /* Appare quando ci passi sopra */
+  text-decoration: underline;
 }
 
 body {
     background-image: url(./images/sfondobianco.jpg);
     background-repeat: no-repeat;
     background-size: auto;
-    
+   /*font-family: Georgia, 'Times New Roman', Times, serif;*/
 }
 
 footer {
@@ -55,7 +58,6 @@ footer {
     background-color: black;
     display: flex;
     flex-direction: row;
-
 }
 
 .logo-nero {
@@ -66,10 +68,44 @@ footer {
 
 .kontakt {
     color: rgb(147, 120, 64);
-    gap: 50px;
     padding-top: 50px;
 }
 
 .kontakt li {
     list-style: none;
+}
+
+.hero-section {
+    border: 1px rgb(167, 117, 10) solid;
+    margin: 50px;
+    min-width: 1000px;
+}
+
+.hero-title {
+    text-align: center;
+    padding: 30px;
+}
+
+.hero-title h1 {
+    font-size: 3rem;
+}
+
+.foto {
+    width: 100%;
+    max-width: 450px;
+    max-height: 214px;
+    margin: 45px;
+}
+
+.img-intro {
+    display: flex;
+    flex-direction: row;
+}
+
+.presentazione {
+    padding: 45px 50px;
+}
+
+.intro-uno {
+    padding-bottom: 45px;
 }
