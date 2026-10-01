@@ -49,6 +49,16 @@
 
 <section id="program" class="program-section">
     <h2 class="section-title">KINOPROGRAM</h2>
+
+    <div class="filter-container">
+    <button class="filter-btn active" onclick="filtraPerSettimana('all')">Alle</button>
+    <button class="filter-btn" onclick="filtraPerSettimana(1)">Uke 1 (2-4 okt)</button>
+    <button class="filter-btn" onclick="filtraPerSettimana(2)">Uke 2 (9-11 okt)</button>
+    <button class="filter-btn" onclick="filtraPerSettimana(3)">Uke 3 (16-18 okt)</button>
+    <button class="filter-btn" onclick="filtraPerSettimana(4)">Uke 4 (23-25 okt)</button>
+    <button class="filter-btn" onclick="filtraPerSettimana(5)">Uke 5 (30 okt-1 nov)</button>
+    </div>
+
     <div id="film-griglia" class="film-griglia"></div>
     <div class="more-btn-container">
         <button id="vis-flere-btn" class="vis-flere-btn">Vis flere filmer</button>
