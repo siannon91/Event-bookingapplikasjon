@@ -347,3 +347,31 @@ footer {
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
     transform: translateY(-2px);
 }
+
+/* per i trailer youtube */
+.modal-trailer-container {
+    margin-top: 20px;
+}
+
+.modal-trailer-container h4 {
+    color: #d4af37;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

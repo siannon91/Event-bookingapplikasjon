@@ -15,7 +15,7 @@ const movies = [
         cast: "Marlene Dietrich, Gary Cooper, Adolphe Menjou",
         language: "Engelsk tale, Norsk tekst",
         poster: "images/morocco.jpg",
-        trailerUrl: "https://www.youtube.com/embed/VFsU3A_vhpY",
+        trailerUrl: "https://www.youtube.com/embed/VFsU3A_vhpY?rel=0",
         description: "En blendende kabaretsangerinne og en kynisk fremmedlegjonær møtes i Nord-Afrika. Mellom dem oppstår en intens tiltrekning, men begge må velge mellom kjærligheten og sine egne uavhengige liv."
     },
     {
@@ -365,6 +365,12 @@ function apriModaleFilm(filmId) {
     document.getElementById('modal-director').textContent = film.director;
     document.getElementById('modal-cast').textContent = film.cast;
 
+    const trailerIframe = document.getElementById('modal-trailer');
+    if (trailerIframe) {
+        // Se c'è un trailer nell'oggetto film lo imposta, altrimenti lascia vuoto
+        trailerIframe.src = film.trailer ? film.trailer : '';
+    }
+
     // Mostra modale
     const modal = document.getElementById('film-modal');
     if (modal) {
@@ -379,6 +385,12 @@ function chiudiModaleFilm() {
         modal.classList.remove('active');
     }
 }
+
+const trailerIframe = document.getElementById('modal-trailer');
+    if (trailerIframe) {
+        trailerIframe.src = '';
+    }
+
 
 // Aggiorna funzione mostramilm per aggiungere il click su ogni card
 for (const film of filmDaMostrare) {
