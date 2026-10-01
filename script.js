@@ -488,3 +488,59 @@ function inizializzaPagina() {
         });
     }
 }
+
+
+function filtraPerSettimana(settimana) {
+    const bottoni = document.querySelectorAll('.filter-btn');
+    for (const btn of bottoni) {
+        btn.classList.remove('active');
+    }
+
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+
+    const grigliaElemento = document.getElementById('film-griglia');
+    if (!grigliaElemento) return;
+
+    grigliaElemento.innerHTML = '';
+    let filmFiltrati;
+    if (settimana === 'all') {
+        filmFiltrati = movies;
+    } else {
+        filmFiltrati = movies.filter(function(film) {
+            return film.week === settimana;
+        });
+    }
+
+    for (const film of filmFiltrati) {
+        const filmCard = document.createElement('div');
+        filmCard.className = 'film-card';
+        filmCard.dataset.id = film.id;
+
+        filmCard.innerHTML = `
+            <div class="poster-container">
+                <img src="${film.poster}" alt="${film.title}" class="film-poster">
+            </div>
+            <div class="film-info">
+                <h3 class="film-tittel">${film.title} <span class="film-ar">(${film.year})</span></h3>
+                <p class="film-sjanger">${film.genre}</p>
+            </div>
+        `;
+
+        filmCard.addEventListener('click', function() {
+            apriModaleFilm(film.id);
+        });
+
+        grigliaElemento.appendChild(filmCard);
+    }
+
+    const bottoneVisFlere = document.getElementById('vis-flere-btn');
+    if (bottoneVisFlere) {
+        if (settimana !== 'all') {
+            bottoneVisFlere.style.display = 'none';
+        } else {
+            bottoneVisFlere.style.display = 'inline-block';
+        }
+    }
+}

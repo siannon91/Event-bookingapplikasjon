@@ -342,6 +342,7 @@ footer {
 /* Pulsante Kjøp billett all'interno del popup */
 .modal-actions {
     margin-top: 25px;
+    font-family: "domine";
 }
 
 .modal-buy-btn {
@@ -349,6 +350,7 @@ footer {
     color: #000;
     border: none;
     padding: 12px 30px;
+    font-family: "domine";
     font-size: 1rem;
     font-weight: bold;
     border-radius: 25px;
@@ -362,3 +364,35 @@ footer {
     transform: translateY(-2px);
 }
 
+/* Contenitore dei filtri per settimana */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    background-color: #1a1a1a;
+    color: #cccccc;
+    border: 1px solid #333333;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: "domine";
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: #d4af37;
+    color: #ffffff;
+}
+
+.filter-btn.active {
+    background-color: #d4af37;
+    color: #000000;
+    border-color: #d4af37;
+    font-weight: bold;
+}
