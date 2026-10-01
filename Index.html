@@ -56,29 +56,6 @@
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <footer>
     <img src="./images/logonero.jpg" alt="Medusa filmteater logo black" class="logo-nero">
     <div class="kontakt">
@@ -92,5 +69,39 @@
         <p>Åpningstider (under Celluloid Heroes Month) Fredag - Søndag: 19:00 - 23:00</p>
     </div>
 </footer>
+
+
+
+<div id="film-modal" class="modal-overlay">
+    <div class="modal-content">
+
+        <div class="modal-body">
+            <div class="modal-poster-col">
+                <img id="modal-poster" src="" alt="Poster film">
+            </div>
+
+            <div class="modal-info-col">
+                <h2 id="modal-title" class="modal-title"></h2>
+                <p id="modal-meta" class="modal-meta"></p>
+                <p id="modal-genre" class="modal-genre"></p>
+                
+                <hr class="modal-divider">
+
+                <p id="modal-description" class="modal-description"></p>
+
+                <div class="modal-credits">
+                    <p><strong>Regi:</strong> <span id="modal-director"></span></p>
+                    <p><strong>Skuespillere:</strong> <span id="modal-cast"></span></p>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="modal-buy-btn">Kjøp billett</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>

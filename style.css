@@ -212,3 +212,138 @@ footer {
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
     transform: translateY(-2px);
 }
+
+
+ 
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px); /* effetto sfocatura sfondo piu' scuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Mostra la modale quando ha la classe .active */
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Finestra contenitore del messaggio */
+.modal-content {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid #8c6d28;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(140, 109, 40, 0.3);
+    position: relative;
+    padding: 30px;
+}
+
+
+.modal-close:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Layout interno a due colonne (locandina e info) */
+.modal-body {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.modal-poster-col {
+    flex: 0 0 240px;
+}
+
+.modal-poster-col img {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info-col {
+    flex: 1;
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 0 8px 0;
+}
+
+.modal-meta {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin: 0 0 4px 0;
+}
+
+.modal-genre {
+    font-size: 0.9rem;
+    color: #d4af37;
+    margin: 0 0 15px 0;
+}
+
+.modal-divider {
+    border: 0;
+    height: 1px;
+    background: #333;
+    margin: 15px 0;
+}
+
+.modal-description {
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.modal-credits p {
+    margin: 6px 0;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.modal-credits strong {
+    color: #d4af37;
+}
+
+/* Pulsante Kjøp billett all'interno del popup */
+.modal-actions {
+    margin-top: 25px;
+}
+
+.modal-buy-btn {
+    background-color: #d4af37;
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-buy-btn:hover {
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
+}

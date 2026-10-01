@@ -289,8 +289,10 @@ function mostraFilm() {
 
     grigliaElemento.innerHTML = ''; // Puliamo la griglia
 
+    // 1. Definiamo la variabile DENTRO la funzione
     const filmDaMostrare = movies.slice(0, filmMostrati);
 
+    // 2. Il ciclo for...of deve stare DENTRO la funzione mostraFilm
     for (const film of filmDaMostrare) {
         const filmCard = document.createElement('div');
         filmCard.className = 'film-card';
@@ -305,10 +307,16 @@ function mostraFilm() {
                 <p class="film-sjanger">${film.genre}</p>
             </div>
         `;
-        
+
+        // Evento click per aprire la modale
+        filmCard.addEventListener('click', function() {
+            apriModaleFilm(film.id);
+        });
+
         grigliaElemento.appendChild(filmCard);
     }
 
+    // Gestione del pulsante Vis flere filmer
     const bottoneVisFlere = document.getElementById('vis-flere-btn');
     if (bottoneVisFlere) {
         if (filmMostrati >= movies.length) {
@@ -334,3 +342,85 @@ function inizializzaPagina() {
 }
 
 document.addEventListener('DOMContentLoaded', inizializzaPagina);
+
+
+
+// per aprire la modale con i dettagli del film selezionato
+function apriModaleFilm(filmId) {
+
+    // Cerca film nell'array
+    const film = movies.find(function(m) {
+        return m.id === filmId;
+    });
+
+    if (!film) return;
+
+    // Dati del film
+    document.getElementById('modal-poster').src = film.poster;
+    document.getElementById('modal-poster').alt = film.title;
+    document.getElementById('modal-title').textContent = film.title;
+    document.getElementById('modal-meta').textContent = film.year + ' • ' + (film.duration);
+    document.getElementById('modal-genre').textContent = film.genre;
+    document.getElementById('modal-description').textContent = film.description;
+    document.getElementById('modal-director').textContent = film.director;
+    document.getElementById('modal-cast').textContent = film.cast;
+
+    // Mostra modale
+    const modal = document.getElementById('film-modal');
+    if (modal) {
+        modal.classList.add('active');
+    }
+}
+
+// Funzione per chiudere la modale
+function chiudiModaleFilm() {
+    const modal = document.getElementById('film-modal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
+
+// Aggiorna funzione mostramilm per aggiungere il click su ogni card
+for (const film of filmDaMostrare) {
+    const filmCard = document.createElement('div');
+    filmCard.className = 'film-card';
+    filmCard.dataset.id = film.id;
+
+    filmCard.innerHTML = `
+        <div class="poster-container">
+            <img src="${film.poster}" alt="${film.title}" class="film-poster">
+        </div>
+        <div class="film-info">
+            <h3 class="film-tittel">${film.title} <span class="film-ar">(${film.year})</span></h3>
+            <p class="film-sjanger">${film.genre}</p>
+        </div>
+    `;
+
+    // Evento click per aprire la modale
+    filmCard.addEventListener('click', function() {
+        apriModaleFilm(film.id);
+    });
+    
+    grigliaElemento.appendChild(filmCard);
+}
+
+// Nella funzione di inizializzazione aggiungi la chiusura
+function inizializzaPagina() {
+    mostraFilm();
+
+    const bottoneVisFlere = document.getElementById('vis-flere-btn');
+    if (bottoneVisFlere) {
+        bottoneVisFlere.addEventListener('click', gestisciVisFlere);
+    }
+
+
+    // Chiude la modale cliccando sullo sfondo scuro esterno
+    const modalOverlay = document.getElementById('film-modal');
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                chiudiModaleFilm();
+            }
+        });
+    }
+}
