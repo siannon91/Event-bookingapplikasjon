@@ -114,3 +114,113 @@ footer {
     text-align: center;
     padding-bottom: 20px;
 }
+
+/* kinoprogram griglia */
+.program-section {
+    padding: 50px 20px;
+    max-width: 1200px;
+    min-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    color: #8c6d28;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.film-griglia {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.film-card {
+    background: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poster-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+.poster-container img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.film-card:hover {
+    transform: translateY(-6px);
+}
+
+.film-card:hover .poster-container {
+    box-shadow: 0 0 20px rgba(184, 134, 11, 0.6), 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.film-card:hover .poster-container img {
+    transform: scale(1.03);
+}
+
+.film-info {
+    padding: 12px 4px 0 4px;
+    text-align: left;
+}
+
+.film-tittel {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 4px 0;
+}
+
+.film-ar {
+    font-weight: 400;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.film-sjanger {
+    font-size: 0.85rem;
+    color: #8c6d28;
+    margin: 0;
+    font-style: italic;
+}
+
+.more-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.vis-flere-btn {
+    background-color: #111;
+    color: #d4af37;
+    border: 2px solid #8c6d28;
+    padding: 14px 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.vis-flere-btn:hover {
+    background-color: #d4af37;
+    color: #000;
+    border-color: #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
+}

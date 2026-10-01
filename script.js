@@ -281,4 +281,56 @@ const movies = [
 ];
 
 
+let filmMostrati = 4;
 
+function mostraFilm() {
+    const grigliaElemento = document.getElementById('film-griglia');
+    if (!grigliaElemento) return;
+
+    grigliaElemento.innerHTML = ''; // Puliamo la griglia
+
+    const filmDaMostrare = movies.slice(0, filmMostrati);
+
+    for (const film of filmDaMostrare) {
+        const filmCard = document.createElement('div');
+        filmCard.className = 'film-card';
+        filmCard.dataset.id = film.id;
+
+        filmCard.innerHTML = `
+            <div class="poster-container">
+                <img src="${film.poster}" alt="${film.title}" class="film-poster">
+            </div>
+            <div class="film-info">
+                <h3 class="film-tittel">${film.title} <span class="film-ar">(${film.year})</span></h3>
+                <p class="film-sjanger">${film.genre}</p>
+            </div>
+        `;
+        
+        grigliaElemento.appendChild(filmCard);
+    }
+
+    const bottoneVisFlere = document.getElementById('vis-flere-btn');
+    if (bottoneVisFlere) {
+        if (filmMostrati >= movies.length) {
+            bottoneVisFlere.style.display = 'none';
+        } else {
+            bottoneVisFlere.style.display = 'inline-block';
+        }
+    }
+}
+
+function gestisciVisFlere() {
+    filmMostrati += 4;
+    mostraFilm();
+}
+
+function inizializzaPagina() {
+    mostraFilm();
+
+    const bottoneVisFlere = document.getElementById('vis-flere-btn');
+    if (bottoneVisFlere) {
+        bottoneVisFlere.addEventListener('click', gestisciVisFlere);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', inizializzaPagina);
