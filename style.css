@@ -49,3 +49,27 @@ body {
     background-size: auto;
     
 }
+
+footer {
+    border-top: 1px rgb(167, 117, 10) solid;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.logo-nero {
+    width: 100%;
+    max-width: 200px;
+    padding: 40px;
+}
+
+.kontakt {
+    color: rgb(147, 120, 64);
+    gap: 50px;
+    padding-top: 50px;
+}
+
+.kontakt li {
+    list-style: none;
+}
