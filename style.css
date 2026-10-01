@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "domine";
+    src: url(./font/Domine-VariableFont_wght.ttf);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -12,9 +18,10 @@
     border-radius: 2px;
     margin: 5px;
     position: sticky;
+    z-index: 1000;
+    top: 0;
     min-width: 700px;
-
-    
+    font-family: "domine";
 }
 
 .logo-bianco {
@@ -27,13 +34,14 @@
 .nav-bar ul {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 40px;
     padding: 47px 60px;
 
 }
 
 .nav-bar li {
     list-style: none;
+    font-weight: bold;
 
 }
 
@@ -50,7 +58,7 @@ body {
     background-image: url(./images/sfondobianco.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-   /*font-family: Georgia, 'Times New Roman', Times, serif;*/
+   font-family: "domine";
 }
 
 footer {
@@ -58,20 +66,22 @@ footer {
     background-color: black;
     display: flex;
     flex-direction: row;
+    min-height: 230px;
 }
 
 .logo-nero {
     width: 100%;
     max-width: 200px;
+    max-height: 190px;
     padding: 40px;
 }
 
-.kontakt {
+#kontakt {
     color: rgb(147, 120, 64);
     padding-top: 50px;
 }
 
-.kontakt li {
+#kontakt li {
     list-style: none;
 }
 
@@ -79,6 +89,7 @@ footer {
     border: 1px rgb(167, 117, 10) solid;
     margin: 50px 50px 35px 50px;
     min-width: 1000px;
+    background-color: #f9ce4227;
 }
 
 .hero-title {
@@ -87,7 +98,8 @@ footer {
 }
 
 .hero-title h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    padding: 15px;
 }
 
 .foto {
@@ -113,6 +125,7 @@ footer {
 .occhiata {
     text-align: center;
     padding-bottom: 20px;
+    color: #666;
 }
 
 /* kinoprogram griglia */
@@ -198,7 +211,7 @@ footer {
     border: 2px solid #8c6d28;
     padding: 15px 40px;
     font-size: 1rem;
-
+    font-family: "domine";
     border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
