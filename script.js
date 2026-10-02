@@ -353,10 +353,10 @@ function mostraFilm() {
 
     grigliaElemento.innerHTML = ''; // Puliamo la griglia
 
-    // 1. Definiamo la variabile DENTRO la funzione
+    // 1. Definiamo la variabile dentro la funzione
     const filmDaMostrare = movies.slice(0, filmMostrati);
 
-    // 2. Il ciclo for...of deve stare DENTRO la funzione mostraFilm
+    // 2. Il ciclo for of dentro la funzione mostraFilm
     for (const film of filmDaMostrare) {
         const filmCard = document.createElement('div');
         filmCard.className = 'film-card';
