@@ -203,7 +203,8 @@ footer {
 
 .more-btn-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .vis-flere-btn {
@@ -270,8 +271,18 @@ footer {
 }
 
 
-.modal-close:hover {
-    color: #fff;
+.close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: #aaaaaa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-modal-btn:hover {
+    color: #ffffff;
     transform: scale(1.1);
 }
 
@@ -288,9 +299,12 @@ footer {
 
 .modal-poster-col img {
     width: 100%;
+    max-width: 272px;
+    height: auto;
     border-radius: 4px;
     border: 1px solid #333;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: block;
 }
 
 .modal-info-col {
@@ -509,11 +523,14 @@ footer {
     padding: 10px;
     border-radius: 6px;
     font-size: 1rem;
+    font-family: "domine";
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-group input:focus {
     outline: none;
     border-color: #d4af37;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
 .checkout-summary {
@@ -530,4 +547,20 @@ footer {
     width: 100%;
     padding: 12px;
     font-size: 1.1rem;
+}
+
+.btn-primary {
+    background-color: #d4af37;
+    color: #000000;
+    border: none;
+    border-radius: 25px;
+    font-family: "domine";
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
 }
