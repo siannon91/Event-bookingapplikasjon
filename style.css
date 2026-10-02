@@ -446,3 +446,88 @@ footer {
     color: #000000;
     border-color: #d4af37;
 }
+
+
+
+/* Modale Acquisto Biglietti */
+.checkout-content {
+    max-width: 500px;
+    padding: 30px;
+}
+
+.checkout-date-text {
+    color: #aaaaaa;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.checkout-time-section {
+    margin-bottom: 20px;
+}
+
+.checkout-label {
+    display: block;
+    font-size: 0.95rem;
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Box per i posti disponibili */
+.seats-info-box {
+    background-color: #1a1a1a;
+    border-left: 4px solid #d4af37;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    border-radius: 4px;
+}
+
+.seats-info-box.few-seats {
+    border-left-color: #ff4d4d;
+    color: #ff8888;
+}
+
+/* Form della cassa */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+.form-group input {
+    background-color: #2a2a2a;
+    border: 1px solid #444444;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #d4af37;
+}
+
+.checkout-summary {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: right;
+    border-top: 1px solid #333333;
+    padding-top: 15px;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+}

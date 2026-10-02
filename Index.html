@@ -113,7 +113,7 @@
                 
 
                 <div class="modal-actions">
-                    <button class="modal-buy-btn">Kjøp billett</button>
+                    <button class="modal-buy-btn" onclick="apriModaleAcquisto()">Kjøp billett</button>
                 </div>
 
             </div>
@@ -121,6 +121,47 @@
     </div>
 </div>
 
+
+<div id="checkout-modal" class="modal-overlay">
+    <div class="modal-content checkout-content">
+        <span class="close-modal-btn" onclick="chiudiModaleAcquisto()">&times;</span>
+        
+        <h2>Kjøp billett</h2>
+        <h3 id="checkout-film-title">Nome Film</h3>
+        <p id="checkout-film-date" class="checkout-date-text"></p>
+
+
+        <div class="checkout-time-section">
+            <label class="checkout-label">Velg tidspunkt (Obligatorisk):</label>
+            <div id="checkout-time-slots" class="time-slots-container">
+
+            </div>
+        </div>
+
+
+        <div id="checkout-seats-info" class="seats-info-box">
+        </div>
+
+
+        <form id="checkout-form" onsubmit="confermaAcquisto(event)">
+            <div class="form-group">
+                <label for="ticket-quantity">Antall billetter:</label>
+                <input type="number" id="ticket-quantity" min="1" max="10" value="1" required onchange="aggiornaTotale()">
+            </div>
+
+            <div class="form-group">
+                <label for="buyer-name">Navn:</label>
+                <input type="text" id="buyer-name" placeholder="Epost / Navn" required>
+            </div>
+
+            <div class="checkout-summary">
+                <p>Totalt: <span id="checkout-total-price">140</span> NOK</p>
+            </div>
+
+            <button type="submit" class="btn-primary buy-btn">Bekreft kjøp</button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
