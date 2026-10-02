@@ -426,6 +426,44 @@ function apriModaleFilm(filmId) {
     document.getElementById('modal-cast').textContent = film.cast;
 
 
+// Impostiamo la data del film
+const dateElement = document.getElementById('modal-date');
+if (dateElement) {
+    dateElement.textContent = film.date ? film.date : 'Dato non disponibile';
+}
+
+// Pulsanti per gli orari
+const timeSlotsContainer = document.getElementById('modal-time-slots');
+if (timeSlotsContainer) {
+    timeSlotsContainer.innerHTML = ''; // Puliamo eventuali orari precedenti
+
+    if (film.time && Array.isArray(film.time)) {
+        for (const orario of film.time) {
+            const timeBtn = document.createElement('button');
+            timeBtn.className = 'time-btn';
+            timeBtn.textContent = orario;
+
+            // Gestione del click sull'orario
+            timeBtn.addEventListener('click', function() {
+                const giaSelezionato = timeBtn.classList.contains('selected');
+
+                // Deselezioniamo tutti gli altri pulsanti orario
+                const tuttiIBottoniOrario = timeSlotsContainer.querySelectorAll('.time-btn');
+                for (const btn of tuttiIBottoniOrario) {
+                    btn.classList.remove('selected');
+                }
+
+                // Se non era già selezionato, lo selezioniamo
+                if (!giaSelezionato) {
+                    timeBtn.classList.add('selected');
+                }
+            });
+
+            timeSlotsContainer.appendChild(timeBtn);
+        }
+    }
+}
+
 
     // Mostra modale
     const modal = document.getElementById('film-modal');

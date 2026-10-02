@@ -396,3 +396,53 @@ footer {
     border-color: #d4af37;
     font-weight: bold;
 }
+
+
+
+
+.modal-showtimes {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.showtime-date {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    margin-bottom: 8px;
+}
+
+.showtime-label {
+    font-size: 0.9rem;
+    color: #d4af37;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.time-slots-container {
+    display: flex;
+    gap: 10px;
+}
+
+.time-btn {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-family: "domine";
+    border: 1px solid #444444;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.time-btn:hover {
+    border-color: #d4af37;
+    background-color: #333333;
+}
+
+.time-btn.selected {
+    background-color: #d4af37;
+    color: #000000;
+    border-color: #d4af37;
+}
