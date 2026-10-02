@@ -20,7 +20,7 @@
     position: sticky;
     z-index: 1000;
     top: 0;
-    min-width: 700px;
+    min-width: 1200px;
     font-family: "domine";
 }
 
@@ -58,7 +58,7 @@ body {
     background-image: url(./images/sfondobianco.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-   font-family: "domine";
+    font-family: "domine";
 }
 
 footer {
@@ -268,6 +268,7 @@ footer {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(140, 109, 40, 0.3);
     position: relative;
     padding: 30px;
+    margin: auto;
 }
 
 
@@ -466,7 +467,8 @@ footer {
 /* Modale Acquisto Biglietti */
 .checkout-content {
     max-width: 500px;
-    padding: 30px;
+    width: 90%;
+    margin: auto;
 }
 
 .checkout-date-text {
