@@ -662,9 +662,16 @@ function mostraPostiDisponibili() {
         return;
     }
 
-    let postiDisponibili = 20;
-    if (filmSelezionatoPerAcquisto.availableSeats && filmSelezionatoPerAcquisto.availableSeats[orarioSelezionatoPerAcquisto] !== undefined) {
-        postiDisponibili = filmSelezionatoPerAcquisto.availableSeats[orarioSelezionatoPerAcquisto];
+    // Prendiamo i posti reali dall'oggetto del film
+    const postiDisponibili = filmSelezionatoPerAcquisto.availableSeats[orarioSelezionatoPerAcquisto] || 0;
+
+    const inputQuantita = document.getElementById('ticket-quantity');
+    if (inputQuantita) {
+        inputQuantita.max = postiDisponibili;
+        inputQuantita.min = 1;
+        if (parseInt(inputQuantita.value) > postiDisponibili) {
+            inputQuantita.value = postiDisponibili;
+        }
     }
 
     if (postiDisponibili <= 5) {
@@ -697,6 +704,10 @@ function chiudiModaleAcquisto() {
         checkoutModal.classList.remove('active');
         checkoutModal.style.display = 'none';
     }
+    const form = document.getElementById('checkout-form');
+    if (form) {
+        form.reset();
+    }
 }
 
 
@@ -709,14 +720,25 @@ function confermaAcquisto(event) {
         return;
     }
 
+    const quantita = parseInt(document.getElementById('ticket-quantity').value, 10) || 1;
+    const postiDisponibili = filmSelezionatoPerAcquisto.availableSeats[orarioSelezionatoPerAcquisto] || 0;
+
+    if (quantita > postiDisponibili) {
+        alert(`Beklager! Det er bare ${postiDisponibili} ledige plasser igjen for dette tidspunktet.`);
+        return;
+    }
+
+    if (quantita < 1) {
+        alert("Vennligst velg minst 1 billett.");
+        return;
+    }
+
     const nomeAcquirente = document.getElementById('buyer-name').value;
     const mailAcquirente = document.getElementById('buyer-mail').value;
-    const quantita = document.getElementById('ticket-quantity').value;
 
     alert(`Takk for kjøpet, ${nomeAcquirente}!\n\nDu har bestilt ${quantita} billett(er) til "${filmSelezionatoPerAcquisto.title}" kl. ${orarioSelezionatoPerAcquisto}.\n\nBillett(er) sendes til ${mailAcquirente}.\n\nGod fornøyelse!`);
 
     document.getElementById('checkout-form').reset();
-
     chiudiModaleAcquisto();
 }
 
