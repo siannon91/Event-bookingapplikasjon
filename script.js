@@ -721,7 +721,7 @@ function confermaAcquisto(event) {
 }
 
 
-document.getElementById('billetter-link').addEventListener('click', function(e) {
+document.getElementById('billetter-alert').addEventListener('click', function(e) {
     e.preventDefault();
     alert("Hvordan kjøpe billetter:\n\n1. Velg en film fra programmet.\n2. Klikk på filmen eller se mer info.\n3. Velg ønsket tidspunkt og klikk 'Kjøp billett'.");
 });
