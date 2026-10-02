@@ -149,10 +149,15 @@
                 <input type="number" id="ticket-quantity" min="1" max="10" value="1" required onchange="aggiornaTotale()">
             </div>
 
-            <div class="form-group">
-                <label for="buyer-name">Navn:</label>
-                <input type="text" id="buyer-name" placeholder="Epost / Navn" required>
-            </div>
+        <div class="form-group">
+            <label for="buyer-name">Navn:</label>
+            <input type="text" id="buyer-name" placeholder="Navn" required>
+        </div>
+
+        <div class="form-group">
+            <label for="buyer-mail">E-post:</label>
+            <input type="email" id="buyer-mail" placeholder="epost@medusafilmteater.no" required>
+        </div>
 
             <div class="checkout-summary">
                 <p>Totalt: <span id="checkout-total-price">140</span> NOK</p>

@@ -710,10 +710,13 @@ function confermaAcquisto(event) {
     }
 
     const nomeAcquirente = document.getElementById('buyer-name').value;
+    const mailAcquirente = document.getElementById('buyer-mail').value;
     const quantita = document.getElementById('ticket-quantity').value;
 
-    alert(`Takk for kjøpet, ${nomeAcquirente}!\n\nDu har bestilt ${quantita} billett(er) til "${filmSelezionatoPerAcquisto.title}" kl. ${orarioSelezionatoPerAcquisto}.\n\nGod fornøyelse!`);
+    alert(`Takk for kjøpet, ${nomeAcquirente}!\n\nDu har bestilt ${quantita} billett(er) til "${filmSelezionatoPerAcquisto.title}" kl. ${orarioSelezionatoPerAcquisto}.\n\nBillett(er) sendes til ${mailAcquirente}.\n\nGod fornøyelse!`);
 
+    document.getElementById('checkout-form').reset();
+    
     chiudiModaleAcquisto();
 }
 
