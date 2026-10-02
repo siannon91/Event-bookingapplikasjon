@@ -716,9 +716,12 @@ function confermaAcquisto(event) {
     alert(`Takk for kjøpet, ${nomeAcquirente}!\n\nDu har bestilt ${quantita} billett(er) til "${filmSelezionatoPerAcquisto.title}" kl. ${orarioSelezionatoPerAcquisto}.\n\nBillett(er) sendes til ${mailAcquirente}.\n\nGod fornøyelse!`);
 
     document.getElementById('checkout-form').reset();
-    
+
     chiudiModaleAcquisto();
 }
 
 
-
+document.getElementById('billetter-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    alert("Hvordan kjøpe billetter:\n\n1. Velg en film fra programmet.\n2. Klikk på filmen eller se mer info.\n3. Velg ønsket tidspunkt og klikk 'Kjøp billett'.");
+});
