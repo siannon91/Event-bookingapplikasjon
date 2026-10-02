@@ -342,6 +342,10 @@ const movies = [
 
 
 let filmMostrati = 4;
+let currentMovieId = null;
+let filmSelezionatoPerAcquisto = null;
+let orarioSelezionatoPerAcquisto = null;
+const PrezzoBiglietto = 140;
 
 function mostraFilm() {
     const grigliaElemento = document.getElementById('film-griglia');
@@ -399,7 +403,29 @@ function inizializzaPagina() {
     if (bottoneVisFlere) {
         bottoneVisFlere.addEventListener('click', gestisciVisFlere);
     }
+
+    // Chiude la modale cliccando sullo sfondo scuro esterno
+    const modalOverlay = document.getElementById('film-modal');
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                chiudiModaleFilm();
+            }
+        });
+    }
+
+    const checkoutModalOverlay = document.getElementById('checkout-modal');
+    if (checkoutModalOverlay) {
+        checkoutModalOverlay.addEventListener('click', function(e) {
+            if (e.target === checkoutModalOverlay) {
+                chiudiModaleAcquisto();
+            }
+        });
+    }
+
 }
+
+
 
 document.addEventListener('DOMContentLoaded', inizializzaPagina);
 
@@ -407,6 +433,7 @@ document.addEventListener('DOMContentLoaded', inizializzaPagina);
 
 // per aprire la modale con i dettagli del film selezionato
 function apriModaleFilm(filmId) {
+    currentMovieId = filmId;
 
     // Cerca film nell'array
     const film = movies.find(function(m) {
@@ -429,7 +456,7 @@ function apriModaleFilm(filmId) {
 // Impostiamo la data del film
 const dateElement = document.getElementById('modal-date');
 if (dateElement) {
-    dateElement.textContent = film.date ? film.date : 'Dato non disponibile';
+    dateElement.textContent = film.date ? film.date : 'Dato ikke tilgjengelig';
 }
 
 // Pulsanti per gli orari
@@ -481,51 +508,6 @@ function chiudiModaleFilm() {
 }
 
 
-
-// Aggiorna funzione mostramilm per aggiungere il click su ogni card
-for (const film of filmDaMostrare) {
-    const filmCard = document.createElement('div');
-    filmCard.className = 'film-card';
-    filmCard.dataset.id = film.id;
-
-    filmCard.innerHTML = `
-        <div class="poster-container">
-            <img src="${film.poster}" alt="${film.title}" class="film-poster">
-        </div>
-        <div class="film-info">
-            <h3 class="film-tittel">${film.title} <span class="film-ar">(${film.year})</span></h3>
-            <p class="film-sjanger">${film.genre}</p>
-        </div>
-    `;
-
-    // Evento click per aprire la modale
-    filmCard.addEventListener('click', function() {
-        apriModaleFilm(film.id);
-    });
-    
-    grigliaElemento.appendChild(filmCard);
-}
-
-// Nella funzione di inizializzazione aggiungi la chiusura
-function inizializzaPagina() {
-    mostraFilm();
-
-    const bottoneVisFlere = document.getElementById('vis-flere-btn');
-    if (bottoneVisFlere) {
-        bottoneVisFlere.addEventListener('click', gestisciVisFlere);
-    }
-
-
-    // Chiude la modale cliccando sullo sfondo scuro esterno
-    const modalOverlay = document.getElementById('film-modal');
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', function(e) {
-            if (e.target === modalOverlay) {
-                chiudiModaleFilm();
-            }
-        });
-    }
-}
 
 
 function filtraPerSettimana(settimana) {
@@ -585,23 +567,20 @@ function filtraPerSettimana(settimana) {
 
 
 
-// Variabili per tracciare il film e l'orario selezionati per l'acquisto
-let filmSelezionatoPerAcquisto = null;
-let orarioSelezionatoPerAcquisto = null;
-const PrezzoBiglietto = 140; // Prezzo in NOK
 
-// Funzione chiamata quando si clicca su "Kjøp billett" nella modale del film
+
 function apriModaleAcquisto() {
-    if (!currentMovieId) return;
+    if (!currentMovieId) {
+        console.error("Ingen film valgt");
+        return;
+    }
 
-    // Troviamo il film corrispondente dall'array movies
     filmSelezionatoPerAcquisto = movies.find(function(f) {
         return f.id === currentMovieId;
     });
 
     if (!filmSelezionatoPerAcquisto) return;
 
-    // Controlliamo se un orario è stato evidenziato nella modale del film
     const bottoniOrarioModale = document.querySelectorAll('#modal-time-slots .time-btn');
     orarioSelezionatoPerAcquisto = null;
 
@@ -612,28 +591,27 @@ function apriModaleAcquisto() {
         }
     }
 
-    // Chiudiamo la modale dei dettagli del film
     chiudiModaleFilm();
 
-    // Impostiamo i dati nella modale di acquisto
     document.getElementById('checkout-film-title').textContent = filmSelezionatoPerAcquisto.title;
     document.getElementById('checkout-film-date').textContent = 'Dato: ' + (filmSelezionatoPerAcquisto.date || 'Non specificato');
 
-    // Resettiamo la quantità a 1 e aggiorniamo il prezzo totale
     document.getElementById('ticket-quantity').value = 1;
     aggiornaTotale();
 
-    // Generiamo i pulsanti per la scelta dell'orario nella cassa
     preparaOrariCassa();
 
-    // Mostriamo la modale di acquisto
     const checkoutModal = document.getElementById('checkout-modal');
     if (checkoutModal) {
+        checkoutModal.classList.add('active');
         checkoutModal.style.display = 'block';
     }
 }
 
-// Funzione per preparare e mostrare gli orari e i posti disponibili nella cassa
+
+
+
+
 function preparaOrariCassa() {
     const container = document.getElementById('checkout-time-slots');
     if (!container) return;
@@ -647,7 +625,6 @@ function preparaOrariCassa() {
             btn.className = 'time-btn';
             btn.textContent = orario;
 
-            // Se l'orario era stato già selezionato prima, lo evidenziamo
             if (orario === orarioSelezionatoPerAcquisto) {
                 btn.classList.add('selected');
             }
@@ -655,14 +632,12 @@ function preparaOrariCassa() {
             btn.addEventListener('click', function() {
                 orarioSelezionatoPerAcquisto = orario;
                 
-                // Aggiorna lo stato visivo dei pulsanti orario nella cassa
                 const tuttiIBottoni = container.querySelectorAll('.time-btn');
                 for (const b of tuttiIBottoni) {
                     b.classList.remove('selected');
                 }
                 btn.classList.add('selected');
 
-                // Aggiorna le informazioni sui posti disponibili
                 mostraPostiDisponibili();
             });
 
@@ -670,23 +645,24 @@ function preparaOrariCassa() {
         }
     }
 
-    // Aggiorna subito le info posti se l'orario è già selezionato
     mostraPostiDisponibili();
 }
 
-// Funzione per mostrare i posti disponibili in base all'orario scelto
+
+
+
+
 function mostraPostiDisponibili() {
     const seatsBox = document.getElementById('checkout-seats-info');
     if (!seatsBox) return;
 
     if (!orarioSelezionatoPerAcquisto) {
-        seatsBox.textContent = 'Velg et tidspunkt for å se ledige plasser (Seleziona un orario per vedere i posti disponibili).';
+        seatsBox.textContent = 'Velg et tidspunkt for å se ledige plasser.';
         seatsBox.classList.remove('few-seats');
         return;
     }
 
-    // Legge i posti dall'oggetto del film
-    let postiDisponibili = 20; // Valore di default se non specificato
+    let postiDisponibili = 20;
     if (filmSelezionatoPerAcquisto.availableSeats && filmSelezionatoPerAcquisto.availableSeats[orarioSelezionatoPerAcquisto] !== undefined) {
         postiDisponibili = filmSelezionatoPerAcquisto.availableSeats[orarioSelezionatoPerAcquisto];
     }
@@ -700,7 +676,9 @@ function mostraPostiDisponibili() {
     }
 }
 
-// Calcola il prezzo totale in base al numero di biglietti
+
+
+
 function aggiornaTotale() {
     const quantitaInput = document.getElementById('ticket-quantity');
     const totaleElemento = document.getElementById('checkout-total-price');
@@ -710,21 +688,24 @@ function aggiornaTotale() {
     }
 }
 
-// Chiude la modale d'acquisto
+
+
+
 function chiudiModaleAcquisto() {
     const checkoutModal = document.getElementById('checkout-modal');
     if (checkoutModal) {
+        checkoutModal.classList.remove('active');
         checkoutModal.style.display = 'none';
     }
 }
 
-// Gestisce la conferma finale dell'acquisto
-function confermaAcquisto(event) {
-    event.preventDefault(); // Impedisce il ricaricamento della pagina
 
-    // Controllo obbligatorio sull'orario
+
+function confermaAcquisto(event) {
+    event.preventDefault();
+
     if (!orarioSelezionatoPerAcquisto) {
-        alert('Vennligst velg et tidspunkt før du fullfører kjøpet! (Per favore seleziona un orario prima di completare l\'acquisto!)');
+        alert('Vennligst velg et tidspunkt før du fullfører kjøpet!');
         return;
     }
 
@@ -735,3 +716,6 @@ function confermaAcquisto(event) {
 
     chiudiModaleAcquisto();
 }
+
+
+
