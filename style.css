@@ -79,6 +79,7 @@ footer {
 #kontakt {
     color: rgb(147, 120, 64);
     padding-top: 50px;
+    line-height: 1.6;
 }
 
 #kontakt li {
@@ -117,16 +118,22 @@ footer {
 
 .presentazione {
     padding: 45px 50px;
+    line-height: 1.6;
 }
 
 .intro-uno {
     padding-bottom: 45px;
 }
 
+.intro-due h3 {
+    font-size: 1.5rem;
+}
+
 .occhiata {
     text-align: center;
     padding-bottom: 20px;
     color: #666;
+    font-size: 700;
 }
 
 /* kinoprogram griglia */
