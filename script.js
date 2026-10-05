@@ -508,8 +508,6 @@ function chiudiModaleFilm() {
 }
 
 
-
-
 function filtraPerSettimana(settimana) {
     const bottoni = document.querySelectorAll('.filter-btn');
     for (const btn of bottoni) {
